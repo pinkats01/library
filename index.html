@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <title>Library</title>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+          <img src="images/cat-logo.png" alt="">
+          <h1> Pinkats <span>Library</span></h1>
+        </div>
+          <div class="library-container">
+            <div class="add-book-container"><button class="add-book">+</button></div>
+              <div class="library">
+             <!-- <div class="book">
+                <div class="book-data">title</div>
+                <div class="book-data">author</div>
+                <div class="book-data">pages</div>
+                <div class="btn-group">
+                    <button class="btn-group-btn read">read</button>
+                    <button class="btn-group-btn delete">delete</button>
+                </div>
+              </div>-->     
+              </div> 
+          </div>
+        <form action="" method="">
+           <div class="form-element close-btn">
+             <button>&times;</button>
+           </div>
+           <div class="form-element">
+             <label for="title">Title</label>
+             <input type="text" id="title" name="title">
+           </div>
+           <div class="form-element">
+            <label for="author">Author</label>
+            <input type="text" id="author" name="author">
+          </div>
+          <div class="form-element">
+            <label for="pages">Pages</label>
+            <input type="number" id="pages" name="pages">
+          </div>
+          <div class="form-element">
+            <input class="reading-state" type="radio" id="read" name="read" value="read">
+            <label for="read">Read</label>
+
+            <input class="reading-state" type="radio" id="not-yet" name="read" value="not-read" checked>
+            <label for="not-yet">Not read</label>
+          </div>
+          <div class="form-element">
+             <input type="submit" class="submit-btn">
+           </div>
+        </form>
+    </div>
+    <div id="overlay"></div>
+</body>
+</html>
