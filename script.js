@@ -15,12 +15,12 @@ function Book(title,author,pages,readingState) {
 let libraryUi = document.querySelector(".library");
 let addBook = document.querySelector(".add-book");
 let overlay= document.getElementById("overlay");
-let formCloseBtn = document.querySelector(".close-btn");
+let formCloseBtn = document.getElementById("close-btn-btn");
 let modal= document.querySelector("form");
 
-addBook.addEventListener("click", showPopupForm);
-formCloseBtn.addEventListener("click", hidePopupForm);
-overlay.addEventListener("click", hidePopupForm);
+addBook.addEventListener("click",() => showPopupForm());
+formCloseBtn.addEventListener("click",() => hidePopupForm());
+overlay.addEventListener("click", () => hidePopupForm());
 
 function showPopupForm(){
     modal.classList.add("active");
