@@ -1,5 +1,5 @@
 
-let library= [];
+/*let library= [];
 
 //make a book object constructor
 
@@ -8,7 +8,38 @@ function Book(title,author,pages,readingState) {
     this.author= author;
     this.pages= pages;
     this.readOrNot= readingState;
+}*/
+
+class Library{
+    constructor(){
+        this.books= [];
+    }
+    
+    addBook(newBook){
+        if(!this.bookExist(newBook)){
+        this.books.push(newBook)
+      }
+    }
+
+    removeBook(title){
+        this.books= this.books.filter((book)=> book.title !== title)
+    }
+
+    bookExist(newBook){
+        return this.books.some((book)=> book.title === newBook.title)
+    }
 }
+
+class Book{
+    constructor(title, author, pages, read){
+        this.title= title;
+        this.author= author;
+        this.pages= pages;
+        this.read= read;
+    }
+}
+
+let library = new Library();
 
 // Popup Form
 
@@ -54,9 +85,9 @@ function makeBook(e){
     let readingState= document.querySelector("input[type=radio]:checked").id;
     let readingStateLabel= document.querySelector(`label[for=${readingState}]`).textContent;
 
-    let book = new Book(title,author,pages,readingStateLabel);
+    let book = new Book(title, author, pages, readingStateLabel);
 
-    library.push(book);
+    library.addBook(book);
 
     makeLibrary(book);
     resetForm();
@@ -86,11 +117,11 @@ function createBookCard(book){
     title.textContent= `${book.title}`;
     author.textContent= `${book.author}`;
     pages.textContent= `${book.pages} Pages`;
-    readBtn.textContent= `${book.readOrNot}`;
+    readBtn.textContent= `${book.read}`;
     deleteBtn.textContent= "Delete";
 
     //add data attr
-    bookCard.dataset.book = library.indexOf(book);
+    bookCard.dataset.book = library.books.indexOf(book);
 
     //add style
     bookCard.classList.add("book");
@@ -100,7 +131,7 @@ function createBookCard(book){
     btnContainer.classList.add("btn-group");
     readBtn.classList.add("btn-group-btn");
     // add class read or not-read
-    if(book.readOrNot=== 'Read'){
+    if(book.read=== 'Read'){
         readBtn.classList.add("read"); 
     } else{
         readBtn.classList.add("not-read"); 
@@ -112,7 +143,7 @@ function createBookCard(book){
 
     function deleteBookCard(e){
         e.target.parentElement.parentElement.remove();
-        library.splice(e.target.parentElement.parentElement.dataset.book, 1);
+        library.books.splice(e.target.parentElement.parentElement.dataset.book, 1);
         makeLibrary();
   }
 
@@ -135,7 +166,7 @@ function createBookCard(book){
 
 function makeLibrary(){
     resetLibrary();
-    for(let book of library){
+    for(let book of library.books){
         createBookCard(book);
     }
 }
