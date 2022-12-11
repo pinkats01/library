@@ -21,10 +21,6 @@ class Library{
       }
     }
 
-    removeBook(title){
-        this.books= this.books.filter((book)=> book.title !== title)
-    }
-
     bookExist(newBook){
         return this.books.some((book)=> book.title === newBook.title)
     }
